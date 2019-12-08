@@ -4,18 +4,25 @@
   "author": "Kent C. Dodds (http://kentcdodds.com/)",
   "license": "GPLv3",
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json)\"",
+    "build": "babel src --extensions .js,.ts,.tsx --out-dir dist",
+    "check-type": "tsc",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|ts|tsx|json)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier --  --list-different",
-    "lint": "eslint --ignore-path .gitignore .",
-    "validate": "npm run lint && npm run build"
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "validate": "npm run lint && npm run format && npm run check-type && npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
-    "eslint-config-prettier": "^6.7.0"
+    "@babel/preset-typescript": "^7.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "husky": "^3.1.0",
+    "typescript": "^3.7.3"
   },
   "dependencies": {
     "prettier": "^1.19.1"
