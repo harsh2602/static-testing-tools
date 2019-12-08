@@ -4,11 +4,20 @@
   "author": "Kent C. Dodds (http://kentcdodds.com/)",
   "license": "GPLv3",
   "scripts": {
-    "build": "babel src --out-dir dist"
+    "build": "babel src --out-dir dist",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier --  --list-different",
+    "lint": "eslint --ignore-path .gitignore .",
+    "validate": "npm run lint && npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1"
+    "@babel/preset-env": "^7.7.1",
+    "eslint-config-prettier": "^6.7.0"
+  },
+  "dependencies": {
+    "prettier": "^1.19.1"
   }
 }
